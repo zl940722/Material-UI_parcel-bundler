@@ -2,10 +2,6 @@
   "defaultSeverity": "error",
   "extends": ["tslint-microsoft-contrib/latest", "tslint-react", "tslint-config-prettier"],
   "jsRules": {},
-  "rules": {
-    "variable-name": false,
-    "function-name": false,
-    "jsx-no-lambda": false
-  },
+  "rules": {},
   "rulesDirectory": []
 }
