@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
+    "sourceMap": true,
     "lib": [
       "dom",
       "esnext"
