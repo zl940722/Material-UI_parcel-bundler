@@ -1,7 +1,13 @@
 {
   "defaultSeverity": "error",
-  "extends": ["tslint-microsoft-contrib/latest", "tslint-react", "tslint-config-prettier"],
+  "extends": [
+    "tslint-microsoft-contrib/latest",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
   "jsRules": {},
-  "rules": {},
+  "rules": {
+    "import-name": false
+  },
   "rulesDirectory": []
 }
