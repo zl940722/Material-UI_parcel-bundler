@@ -10,6 +10,7 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "sourceMap": true,
+    "esModuleInterop": true,
     "lib": [
       "dom",
       "esnext"
