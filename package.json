@@ -19,7 +19,6 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch"
   },
-
   "engines": {
     "node": ">= 8.11.0",
     "npm": ">= 6.0.0"
@@ -52,6 +51,7 @@
     "@material-ui/pickers": "^3.1.2",
     "components": "^0.1.0",
     "date-fns": "2.0.0-alpha.27",
+    "material-table": "^1.41.0",
     "prop-types": "^15.6.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
