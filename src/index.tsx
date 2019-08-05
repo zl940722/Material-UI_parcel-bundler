@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import "~/index.css";
 
 import App from "~/components/App";
-import { ThemeProvider } from "@material-ui/styles";
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
@@ -48,8 +48,8 @@ const theme = createMuiTheme({
 });
 
 render(
-  <ThemeProvider theme={theme}>
+  <MuiThemeProvider theme={theme}>
     <App/>
-  </ThemeProvider>,
+  </MuiThemeProvider>,
   document.getElementById("root")
 );
