@@ -53,8 +53,10 @@
     "date-fns": "2.0.0-alpha.27",
     "material-table": "^1.41.0",
     "prop-types": "^15.6.0",
-    "react": "^16.8.4",
+    "react": ">=15",
     "react-dom": "^16.8.4",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
     "src": "^1.1.2"
   },
   "devDependencies": {
@@ -62,6 +64,8 @@
     "@material-ui/icons": "^4.2.1",
     "@material-ui/styles": "^4.1.2",
     "@types/classnames": "^2.2.9",
+    "@types/react-router": "^5.0.3",
+    "@types/react-router-dom": "^4.3.4",
     "@types/jest": "^24.0.15",
     "@types/lodash": "^4.14.135",
     "@types/node": "^12.0.12",

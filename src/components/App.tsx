@@ -1,19 +1,15 @@
 import * as React from "react";
 import { withTheme } from "@material-ui/core/styles";
-import { ContainedButtons } from "~/components/ContainedButtons";
-import { Switchs } from "~/components/Switchs";
-import { Checkboxes } from "~/components/Checkboxes";
-import { SimpleTabs } from "~/components/SimpleTabs";
-import ModelManageView from "~/pages/ModelManage/ModelManageView";
+
+import {BrowserRouter} from 'react-router-dom';
+import Routes from '~/components/Routes';
 
 const App = withTheme(() => {
   return (
     <div>
-      <Switchs/>
-      <ContainedButtons/>
-      <Checkboxes/>
-      <SimpleTabs/>
-      <ModelManageView/>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     </div>
   );
 });
