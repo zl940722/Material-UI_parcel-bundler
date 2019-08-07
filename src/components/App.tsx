@@ -1,16 +1,21 @@
 import * as React from "react";
 import { withTheme } from "@material-ui/core/styles";
 
-import {BrowserRouter} from 'react-router-dom';
-import Routes from '~/components/Routes';
+import { BrowserRouter } from "react-router-dom";
+import Layout from "~/components/Layout/LayoutView";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { themes, overrides } from "~/themes";
+
+const theme = createMuiTheme({ ...themes.default, ...overrides });
+
 
 const App = withTheme(() => {
   return (
-    <div>
+    <MuiThemeProvider theme={theme}>
       <BrowserRouter>
-        <Routes />
+        <Layout/>
       </BrowserRouter>
-    </div>
+    </MuiThemeProvider>
   );
 });
 

@@ -1,11 +1,12 @@
-import {Route, Switch} from "react-router";
-import React from 'react';
+import { Route, Switch } from "react-router";
+import React from "react";
 
-import ModelManageView from "~/pages/ModelManage/ModelManageView";
+import TestView from "~/pages/ModelManage/Test/TestView";
+
 const Routes = () => (
   <Switch>
-    <Route path={"/"} component={ModelManageView}/>
+    <Route path={"/modelManage/test"} component={TestView}/>
   </Switch>
-)
+);
 
 export default Routes;

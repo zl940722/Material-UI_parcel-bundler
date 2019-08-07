@@ -1,4 +1,8 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import InboxIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import classnames from "classnames";
 import {
   Collapse,
   Divider,
@@ -6,133 +10,10 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography,
-  withStyles
+  Typography
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import classnames from "classnames";
-import { Inbox as InboxIcon } from "@material-ui/icons";
 
-import Dot from "../Dot";
-
-const SidebarLink = ({
-  link,
-  icon,
-  label,
-  children,
-  location,
-  classes,
-  isSidebarOpened,
-  nested,
-  type,
-  isOpen,
-  toggleCollapse
-}) => {
-
-  const isLinkActive =
-    link &&
-    (location.pathname === link || location.pathname.indexOf(link) !== -1);
-
-  if (type === "title")
-    return (
-      <Typography
-        className={classnames(classes.linkText, classes.sectionTitle, {
-          [classes.linkTextHidden]: !isSidebarOpened
-        })}
-      >
-        {label}
-      </Typography>
-    );
-
-  if (type === "divider") return <Divider className={classes.divider} />;
-
-  if (!children)
-    return (
-      <ListItem
-        button
-        component={link && Link}
-        to={link}
-        className={classes.link}
-        classes={{
-          root: classnames(classes.linkRoot, {
-            [classes.linkActive]: isLinkActive && !nested,
-            [classes.linkNested]: nested
-          })
-        }}
-        disableRipple
-      >
-        <ListItemIcon
-          className={classnames(classes.linkIcon, {
-            [classes.linkIconActive]: isLinkActive
-          })}
-        >
-          {nested ? <Dot color={isLinkActive && "primary"} /> : icon}
-        </ListItemIcon>
-        <ListItemText
-          classes={{
-            primary: classnames(classes.linkText, {
-              [classes.linkTextActive]: isLinkActive,
-              [classes.linkTextHidden]: !isSidebarOpened
-            })
-          }}
-          primary={label}
-        />
-      </ListItem>
-    );
-
-  return (
-    <React.Fragment>
-      <ListItem
-        button
-        component={link && Link}
-        onClick={toggleCollapse}
-        className={classes.link}
-        to={link}
-        disableRipple
-      >
-        <ListItemIcon
-          className={classnames(classes.linkIcon, {
-            [classes.linkIconActive]: isLinkActive
-          })}
-        >
-          {icon ? icon : <InboxIcon />}
-        </ListItemIcon>
-        <ListItemText
-          classes={{
-            primary: classnames(classes.linkText, {
-              [classes.linkTextActive]: isLinkActive,
-              [classes.linkTextHidden]: !isSidebarOpened
-            })
-          }}
-          primary={label}
-        />
-      </ListItem>
-      {children && (
-        <Collapse
-          in={isOpen && isSidebarOpened}
-          timeout="auto"
-          unmountOnExit
-          className={classes.nestedList}
-        >
-          <List component="div" disablePadding>
-            {children.map(childrenLink => (
-              <SidebarLink
-                key={childrenLink && childrenLink.link}
-                location={location}
-                isSidebarOpened={isSidebarOpened}
-                classes={classes}
-                nested
-                {...childrenLink}
-              />
-            ))}
-          </List>
-        </Collapse>
-      )}
-    </React.Fragment>
-  );
-};
-
-const styles = theme => ({
+const useStyles = makeStyles((theme: any) => ({
   link: {
     textDecoration: "none",
     paddingLeft: theme.spacing.unit * 4.5,
@@ -190,6 +71,125 @@ const styles = theme => ({
     height: 1,
     backgroundColor: "#D8D8D880"
   }
-});
+}));
 
-export default withStyles(styles, { withTheme: true })(SidebarLink);
+// tslint:disable-next-line:max-func-body-length
+const SidebarLink = ({ link,
+                       icon,
+                       label,
+                       children,
+                       location,
+                       isSidebarOpened,
+                       nested,
+                       type,
+                       isOpen,
+                       toggleCollapse
+                     }: any) => {
+
+  const classes: any = useStyles();
+
+  const isLinkActive =
+    link &&
+    (location.pathname === link || location.pathname.indexOf(link) !== -1);
+
+  if (type === "title")
+    return (
+      <Typography
+        className={classnames(classes.linkText, classes.sectionTitle, {
+          [classes.linkTextHidden]: !isSidebarOpened
+        })}
+      >
+        {label}
+      </Typography>
+    );
+
+  if (type === "divider") return <Divider className={classes.divider} />;
+
+  if (!children)
+    return (
+      <ListItem
+        button={true}
+        component={link && Link}
+        to={link}
+        className={classes.link}
+        classes={{
+          root: classnames(classes.linkRoot, {
+            [classes.linkActive]: isLinkActive && !nested,
+            [classes.linkNested]: nested
+          })
+        }}
+        disableRipple={true}
+      >
+        <ListItemIcon
+          className={classnames(classes.linkIcon, {
+            [classes.linkIconActive]: isLinkActive
+          })}
+        >
+          {nested ? icon: icon}
+        </ListItemIcon>
+        <ListItemText
+          classes={{
+            primary: classnames(classes.linkText, {
+              [classes.linkTextActive]: isLinkActive,
+              [classes.linkTextHidden]: !isSidebarOpened
+            })
+          }}
+          primary={label}
+        />
+      </ListItem>
+    );
+
+  return (
+    <React.Fragment>
+      <ListItem
+        button={true}
+        component={link && Link}
+        onClick={toggleCollapse}
+        className={classes.link}
+        to={link}
+        disableRipple={true}
+      >
+        <ListItemIcon
+          className={classnames(classes.linkIcon, {
+            [classes.linkIconActive]: isLinkActive
+          })}
+        >
+          {icon ? icon : <InboxIcon />}
+        </ListItemIcon>
+        <ListItemText
+          classes={{
+            primary: classnames(classes.linkText, {
+              [classes.linkTextActive]: isLinkActive,
+              [classes.linkTextHidden]: !isSidebarOpened
+            })
+          }}
+          primary={label}
+        />
+      </ListItem>
+      {children && (
+        <Collapse
+          in={isOpen && isSidebarOpened}
+          timeout="auto"
+          unmountOnExit={true}
+          className={classes.nestedList}
+        >
+          <List component="div" disablePadding={true}>
+            {children.map((childrenLink: any) => (
+              // tslint:disable-next-line:use-simple-attributes
+              <SidebarLink
+                key={childrenLink && childrenLink.link}
+                location={location}
+                isSidebarOpened={isSidebarOpened}
+                classes={classes}
+                nested={true}
+                {...childrenLink}
+              />
+            ))}
+          </List>
+        </Collapse>
+      )}
+    </React.Fragment>
+  );
+};
+
+export default SidebarLink;
